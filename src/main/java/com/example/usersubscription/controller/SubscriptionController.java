@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @RestController
-@RequestMapping("/subscriptions")
+@RequestMapping("/users/{userId}/subscriptions")
 public class SubscriptionController {
     private final SubscriptionService subscriptionService;
 
@@ -22,18 +22,18 @@ public class SubscriptionController {
     }
 
     @PostMapping
-    public ResponseEntity<Subscription> addSubscription(@RequestBody Subscription subscription) {
-        return ResponseEntity.ok(subscriptionService.addSubscription(subscription));
+    public ResponseEntity<Subscription> addSubscription(@PathVariable Long userId, @RequestBody Subscription subscription) {
+        return ResponseEntity.ok(subscriptionService.addSubscription(userId, subscription));
     }
 
-    @GetMapping("/user/{userId}")
+    @GetMapping
     public ResponseEntity<List<Subscription>> getSubscriptionsByUser(@PathVariable Long userId) {
         return ResponseEntity.ok(subscriptionService.getSubscriptionsByUserId(userId));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteSubscription(@PathVariable Long id) {
-        subscriptionService.deleteSubscription(id);
+    @DeleteMapping("/{subId}")
+    public ResponseEntity<Void> deleteSubscription(@PathVariable Long userId, @PathVariable Long subId) {
+        subscriptionService.deleteSubscription(subId);
         return ResponseEntity.noContent().build();
     }
 

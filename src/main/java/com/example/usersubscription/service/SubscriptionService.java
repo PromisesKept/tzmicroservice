@@ -19,7 +19,7 @@ public class SubscriptionService {
         this.subscriptionRepository = subscriptionRepository;
     }
 
-    public Subscription addSubscription(Subscription subscription) {
+    public Subscription addSubscription(Long userId, Subscription subscription) {
         return subscriptionRepository.save(subscription);
     }
 
@@ -31,8 +31,4 @@ public class SubscriptionService {
         subscriptionRepository.deleteById(id);
     }
 
-    public List<Subscription> getTopSubscriptions() {
-        // TODO возврат ТОП-3 подписок
-        return null;
-    }
 }
