@@ -44,6 +44,7 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
+    // в ТЗ нет, но пусть будет на всякий
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
