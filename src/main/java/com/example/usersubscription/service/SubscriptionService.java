@@ -31,4 +31,7 @@ public class SubscriptionService {
         subscriptionRepository.deleteById(id);
     }
 
+    public List<Subscription> getTopSubscriptions() {
+        return List.of(); // TODO какая-то реализация
+    }
 }
